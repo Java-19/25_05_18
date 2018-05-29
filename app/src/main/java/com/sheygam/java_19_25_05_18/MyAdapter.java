@@ -40,6 +40,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         notifyItemRemoved(4);
     }
 
+    public void remove(int index){
+        persons.remove(index);
+        notifyItemRemoved(index);
+    }
+
+    public void cancelRemove(int index){
+        notifyItemChanged(index);
+    }
+
+    public void move(int from, int to){
+        Person tmp = persons.remove(from);
+        persons.add(to,tmp);
+        notifyItemMoved(from,to);
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
